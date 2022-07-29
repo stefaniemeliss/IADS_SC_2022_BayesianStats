@@ -1,0 +1,9 @@
+model{
+for (i in 1:38){
+Nest[i]~dpois(exp(eta[i])*e[i]/theta)
+e[i]~dgamma(theta,1)
+}
+eta<-X%*%beta
+for (i in 1:5){beta[i]~dnorm(0,0.01)}
+theta~dunif(1,50) # a guess, the classical fit is about 9
+}

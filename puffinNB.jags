@@ -1,0 +1,10 @@
+model{
+for (i in 1:38){
+Nest[i]~dnegbin(p[i],theta)
+lambda[i]<-exp(eta[i])
+p[i]<-theta/(theta+lambda[i])
+}
+eta<-X%*%beta
+for (i in 1:5){beta[i]~dnorm(0,0.01)}
+theta~dunif(1,50) # a guess, the classical fit is about 9
+}

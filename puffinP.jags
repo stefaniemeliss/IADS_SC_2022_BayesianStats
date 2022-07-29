@@ -1,0 +1,5 @@
+model{
+for (i in 1:38) {Nest[i]~dpois(exp(eta[i]))}
+eta<-X%*%beta
+for (i in 1:5) {beta[i]~dnorm(0,0.01)}
+}

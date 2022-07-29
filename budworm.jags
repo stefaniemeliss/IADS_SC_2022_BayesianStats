@@ -1,0 +1,14 @@
+model{
+for (i in 1:6){
+numdead[i]~dbin(p[i],20)
+logit(p[i])<-alphaM+betaM*ldose[i]
+}
+for (i in 7:12){
+numdead[i]~dbin(p[i],20)
+logit(p[i])<-alphaF+betaF*ldose[i]
+}
+betaM~dnorm(0,0.001)
+alphaM~dnorm(0,0.001)
+betaF~dnorm(0,0.001)
+alphaF~dnorm(0,0.001)
+}
